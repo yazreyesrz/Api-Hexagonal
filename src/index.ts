@@ -3,12 +3,13 @@ import express from "express";
 import cors from "cors";
 import db from "../database/mongodb";
 import route from "./bebidas/infraestructure/routes/bebida.route";
+import postreroute from "./postres/infraestructure/routes/postre.route";
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 const port = process.env.PORT || 1001;
-
+app.use(postreroute);
 app.use(route);
 db().then();
 

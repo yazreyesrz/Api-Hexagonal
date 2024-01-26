@@ -3,17 +3,19 @@ import { PostreUseCase } from "../../application/postreUseCase";
 
 export class PostreController {
   constructor(private postreUseCase: PostreUseCase) {
-    this.deleteCtrl = this.deleteCtrl.bind(this);
-    this.findCtrl = this.findCtrl.bind(this);
+    this.deleteOneCtrl = this.deleteOneCtrl.bind(this);
+    this.findOneCtrl = this.findOneCtrl.bind(this);
   }
 
-  public async findCtrl({ query }: Request, res: Response) {
-    const postre = await this.postreUseCase.findByidPostres.execute();
+  public async findOneCtrl({ query }: Request, res: Response) {
+    const { uuid = "" } = query;
+    const postre = await this.postreUseCase.findByidPostres.execute(`${uuid}`);
     res.send({ postre });
   }
 
-  public async deleteCtrl({ query }: Request, res: Response) {
-    const postre = await this.postreUseCase.deletePostres.execute(query);
+  public async deleteOneCtrl({ query }: Request, res: Response) {
+    const { uuid = "" } = query;
+    const postre = await this.postreUseCase.deletePostres.execute(`${uuid}`);
     res.send({ postre });
   }
 }

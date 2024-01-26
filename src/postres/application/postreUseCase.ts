@@ -1,12 +1,13 @@
 import { PostreRepository } from "../domain/postre.repository";
-import { findByIdPostresUseCase } from "./findbyidpostreUseCase";
-import { DeletePostreUseCase } from "./deletepostreUseCase";
+import { findByIdUseCase } from "./findbyidpostreUseCase";
+import { deletePostresUseCase } from "./deletepostreUseCase";
+
 export class PostreUseCase {
-  public deletePostres: DeletePostreUseCase;
-  public findByidPostres: findByIdPostresUseCase;
+  public deletePostres: deletePostresUseCase;
+  public findByidPostres: findByIdUseCase;
 
   constructor(private readonly postreRepository: PostreRepository) {
-    this.deletePostres = new DeletePostreUseCase(postreRepository);
-    this.findByidPostres = new findByIdPostresUseCase(postreRepository);
+    this.deletePostres = new deletePostresUseCase(postreRepository);
+    this.findByidPostres = new findByIdUseCase(postreRepository);
   }
 }
