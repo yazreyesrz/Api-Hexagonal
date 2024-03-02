@@ -8,9 +8,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const port = process.env.PORT || 1001;
-app.use(postreroute);
-app.use(route);
-db().then();
+const port = process.env.PORT ?? 1001;
 
+app.use(postreroute);
+
+app.use(route);
+
+db().then();
 app.listen(port, () => console.log("Servidor iniciado en el puerto " + port));

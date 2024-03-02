@@ -7,7 +7,6 @@ const BeebidaSchema = new Schema(
     },
     price: {
       type: Number,
-      unique: true,
     },
     amount: {
       type: Number,
